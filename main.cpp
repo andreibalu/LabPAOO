@@ -19,14 +19,14 @@ class Computer{
     
     static int nr;  //pt a stii cate computere exista
     
-    int getNrComp()
+    void getNrComp()
     {
-        return nrcomp;   
+        cout<<nrcomp<<"\n";  
     }
     
-    void setNrComp()
+    void setNrComp(int a)
     {
-        cout<<nrcomp<<"\n";   
+        nrcomp = a;   
     }
     
     void getNume()
@@ -53,5 +53,8 @@ int main()
     Computer c("c1",5);
     
     c.getNume();
+    c.getNrComp();
+    c.setNrComp(3);
+    c.getNrComp();
     
 }
