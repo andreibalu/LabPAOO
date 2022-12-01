@@ -9,19 +9,16 @@ using namespace std;
 class Computer{
     
   protected:
-    
     string nume;
     int nrcomp;
 
-
   public:
     Computer(string n , int c):nume(n),nrcomp(c){nr++; cout<<"computer object created\n";};
-    
     static int nr;  //pt a stii cate computere exista
     
     void getNrComp()
     {
-        cout<<nrcomp<<"\n";  
+        cout<<"Computer has "<<nrcomp<<" parts"<<"\n";  
     }
     
     void setNrComp(int a)
@@ -31,18 +28,28 @@ class Computer{
     
     void getNume()
     {
-        cout<<nume<<"\n";
+        cout<<"Computer is called "<<nume<<"\n";
+    }
+
+    static void getNrOfComps()
+    {
+        cout << "There is a total of " << nr << " computers \n";
     }
     virtual ~Computer()
     {
         cout<<"computer object destroyed\n";   
     }
+
+    Computer& operator=(const Computer& rhs)
+    {
+        if (this == &rhs) return *this;
+        nume = rhs.nume;
+        nrcomp = rhs.nrcomp;
+        return *this;
+    }
     
   private:
     Computer(const Computer& other); //uncopyable
-    Computer& operator=(const Computer&);//copy assignment not allowed
-    
- 
 };
 
 int Computer::nr = 0;
@@ -50,11 +57,18 @@ int Computer::nr = 0;
 
 int main()
 {
-    Computer c("c1",5);
+    Computer c1("c1",5);        //obiectul c1
+    Computer c2("c2", 6);       //obiectul c2
+    Computer::getNrOfComps();
     
-    c.getNume();
-    c.getNrComp();
-    c.setNrComp(3);
-    c.getNrComp();
-    
+    c1.getNume();
+    c1.getNrComp();
+    c2.getNume();
+    c2.getNrComp();
+    c1.setNrComp(3);
+    c1.getNrComp();
+
+    c2 = c1;                   //c2 devine c1
+    c2.getNume();
+    c2.getNrComp();   
 }
