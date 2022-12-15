@@ -1,4 +1,5 @@
-// https://github.com/andreibalu/LabPAOO
+//https://github.com/andreibalu/LabPAOO
+//https://github.com/andreibalu/LabPAOO/blob/main/main.cpp
 #include <iostream>
 #include <string>
 #include <memory>
